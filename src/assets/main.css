@@ -37,6 +37,12 @@
 
 @layer base {
   
+  html,
+  body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+
   html {
     font-family: var(--font-sans);
     color: var(--color-default); 
