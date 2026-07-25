@@ -4,12 +4,19 @@ import { nextTick, ref, onMounted, onBeforeUnmount } from 'vue'
 import logo from '@/assets/icons/logo.svg'
 import arrowDown from '@/assets/icons/arrowDown.svg'
 import search from '@/assets/icons/search.svg'
+import hamburger from '@/assets/icons/hamburger.svg'
+import close from '@/assets/icons/close.svg'
 
 interface NavItem {
   label: string
   icon?: string
   href: string
   children?: NavItem[]
+}
+
+interface FooterItem {
+  label: string
+  href: string
 }
 
 const navItems: NavItem[] = [
@@ -37,6 +44,13 @@ const searchInputRef = ref<HTMLInputElement | null>(null)
 const searchInputMobileRef = ref<HTMLInputElement | null>(null)
 
 const mobileMenuOpen = ref(false)
+
+const footerItems: FooterItem[] = [
+  { label: 'Kontakt', href: '/kontakt' },
+  { label: 'Instagram', href: '#' },
+  { label: 'Facebook', href: '#' },
+  { label: 'LinkedIn', href: '#' },
+]
 
 function toggleDropdown(label: string) {
   activeDropdown.value = activeDropdown.value === label ? null : label
@@ -115,7 +129,7 @@ onBeforeUnmount(() => {
           'lg:opacity-100 lg:pointer-events-auto',
         ]"
       >
-        <img :src="logo" alt="Logo" class="h-4.75 w-[114.37px]" />
+        <img :src="logo" alt="Logo" class="h-4.75 w-[114.37px]"/>
       </div>
 
       <!-- Widok dekstopowy (od lg w górę) -->
@@ -247,40 +261,12 @@ onBeforeUnmount(() => {
         <!-- Przycisk Menu Mobilnego (Hamburger i X) -->
         <button
           type="button"
-          class="relative z-20 inline-flex items-center justify-center p-2 text-slate-900"
+          class="relative z-20 inline-flex items-center justify-center text-slate-900"
           @click="toggleMobileMenu"
           aria-label="Otwórz menu"
         >
-          <svg
-            v-if="!mobileMenuOpen"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-          <svg
-            v-else
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <img v-if="!mobileMenuOpen" :src="hamburger" alt="Otwórz menu" class="h-6 w-6" />
+          <img v-else :src="close" alt="Zamknij menu" class="h-6 w-6" />
         </button>
       </div>
 
@@ -304,21 +290,13 @@ onBeforeUnmount(() => {
                   @click="toggleDropdown(item.label)"
                 >
                   <span>{{ item.label }}</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                  <img
+                    :src="arrowDown"
+                    alt=""
+                    aria-hidden="true"
                     class="h-5 w-5 text-slate-400 transition-transform duration-200"
                     :class="activeDropdown === item.label ? 'rotate-180' : ''"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                  />
                 </button>
 
                 <!-- Podmenu dropdown -->
@@ -355,11 +333,15 @@ onBeforeUnmount(() => {
           </ul>
 
           <!-- Skróty ze stopki -->
-          <div class="mt-auto flex flex-wrap gap-x-6 gap-y-3 pt-12 pb-4 text-[14px] text-slate-500">
-            <a href="/kontakt" class="hover:text-slate-900 transition-colors">Kontakt</a>
-            <a href="#" class="hover:text-slate-900 transition-colors">Instagram</a>
-            <a href="#" class="hover:text-slate-900 transition-colors">Facebook</a>
-            <a href="#" class="hover:text-slate-900 transition-colors">LinkedIn</a>
+          <div class="mt-auto flex flex-wrap gap-x-6 pt-12 text-[14px] text-slate-500">
+            <a
+              v-for="item in footerItems"
+              :key="item.label"
+              :href="item.href"
+              class="hover:text-slate-900 transition-colors"
+            >
+              {{ item.label }}
+            </a>
           </div>
         </div>
       </div>
