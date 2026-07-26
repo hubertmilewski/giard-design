@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import ContentBlock from '@/components/ui/ContentBlock.vue'
 import Buttons from '@/components/ui/Buttons.vue'
+
 import buttonArrowDown from '@/assets/icons/buttonArrowDown.svg'
+import Image from '@/assets/images/intro-image.webp'
 </script>
 
 <template>
@@ -33,8 +35,14 @@ import buttonArrowDown from '@/assets/icons/buttonArrowDown.svg'
       </div>
 
       <!-- Prawa strona -->
-      <div class="lg:col-span-6 h-100 lg:h-full w-full">
-        <!-- Pusta przestrzeń -->
+      <div class="lg:col-span-6 self-stretch relative min-h-100 lg:min-h-0 w-full">
+        <img
+          :src="Image"
+          alt="Zdjecie ogrodu"
+          class="absolute inset-0 w-full h-full object-cover"
+          fetchpriority="high"
+          decoding="sync"
+        />
       </div>
     </div>
   </section>
