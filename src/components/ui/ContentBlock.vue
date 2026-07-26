@@ -2,14 +2,15 @@
 defineProps<{
   tag?: string
   titleClass?: string
+  descriptionClass?: string
 }>()
 </script>
 
 <template>
-  <div class="flex flex-col items-start max-w-149.75">
+  <div class="flex flex-col items-start">
     <!-- mała etykieta (np. "O firmie"), ale nie wymagana -->
-    <span v-if="tag" class="text-xs uppercase tracking-wider mb-4 opacity-80">
-      {{ tag }}
+    <span v-if="tag || $slots.tag" class="text-xs mb-4">
+      <slot name="tag">{{ tag }}</slot>
     </span>
 
     <!-- Nagłówek (używamy slotu, żeby móc wstawić np. <em> do kursywy) -->
@@ -18,7 +19,7 @@ defineProps<{
     </h2>
 
     <!-- Opis -->
-    <p class="mt-11 text-base leading-relaxed opacity-90 max-w-xl text-[16px]">
+    <p :class="['text-base leading-relaxed opacity-90 max-w-xl text-[16px]', descriptionClass]">
       <slot name="description" />
     </p>
 
