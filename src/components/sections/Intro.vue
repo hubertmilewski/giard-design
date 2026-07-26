@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import ContentBlock from '@/components/ui/ContentBlock.vue'
 import Buttons from '@/components/ui/Buttons.vue'
 
@@ -9,6 +10,29 @@ import arrowRight from '@/assets/icons/arrowRight.svg'
 import Image from '@/assets/images/intro-image.webp'
 import Image2 from '@/assets/images/intro-image2.webp'
 import Image3 from '@/assets/images/intro-image3.webp'
+
+type Slide = { id: number; src: string; alt: string }
+
+const slides: Slide[] = [
+  { id: 1, src: Image, alt: 'Zdjecie ogrodu - realizacja 1' },
+  { id: 2, src: Image2, alt: 'Zdjecie ogrodu - realizacja 2' },
+  { id: 3, src: Image3, alt: 'Zdjecie ogrodu - realizacja 3' },
+]
+
+const currentIndex = ref(0)
+const currentSlide = computed<Slide>(() => slides[currentIndex.value] ?? slides[0]!)
+
+const transitionName = ref('slide-next')
+
+const nextSlide = () => {
+  transitionName.value = 'slide-next'
+  currentIndex.value = (currentIndex.value + 1) % slides.length
+}
+
+const prevSlide = () => {
+  transitionName.value = 'slide-prev'
+  currentIndex.value = (currentIndex.value - 1 + slides.length) % slides.length
+}
 </script>
 
 <template>
@@ -40,14 +64,19 @@ import Image3 from '@/assets/images/intro-image3.webp'
       </div>
 
       <!-- Prawa strona -->
-      <div class="lg:col-span-6 self-stretch relative min-h-100 lg:min-h-0 w-full">
-        <img
-          :src="Image"
-          alt="Zdjecie ogrodu"
-          class="absolute inset-0 w-full h-full object-cover"
-          fetchpriority="high"
-          decoding="sync"
-        />
+      <div
+        class="lg:col-span-6 self-stretch relative min-h-100 lg:min-h-0 w-full overflow-hidden bg-bg-sand"
+      >
+        <Transition :name="transitionName">
+          <img
+            :key="currentSlide.id"
+            :src="currentSlide.src"
+            :alt="currentSlide.alt"
+            class="absolute inset-0 w-full h-full object-cover"
+            fetchpriority="high"
+            decoding="sync"
+          />
+        </Transition>
 
         <!-- Slider -->
         <div class="absolute bottom-0 right-0 flex bg-white z-10">
@@ -55,19 +84,54 @@ import Image3 from '@/assets/images/intro-image3.webp'
             type="button"
             class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white hover:bg-neutral-100 transition-colors"
             aria-label="Poprzedni slajd"
+            @click="prevSlide"
           >
-            <img :src="arrowRight" alt="strzalkaWprawo">
+            <img :src="arrowRight" alt="strzalkaWprawo" />
           </button>
-          
+
           <button
             type="button"
             class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white hover:bg-neutral-100 transition-colors"
             aria-label="Następny slajd"
+            @click="nextSlide"
           >
-            <img :src="arrowLeft" alt="strzalkaWlewo">
+            <img :src="arrowLeft" alt="strzalkaWlewo" />
           </button>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.slide-next-enter-active,
+.slide-next-leave-active,
+.slide-prev-enter-active,
+.slide-prev-leave-active {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* nowe wjeżdża z prawej, stare odjeżdża w lewo */
+.slide-next-enter-from {
+  transform: translateX(100%);
+}
+.slide-next-leave-to {
+  transform: translateX(-100%);
+}
+
+/* nowe wjeżdża z lewej, stare odjeżdża w prawo */
+.slide-prev-enter-from {
+  transform: translateX(-100%);
+}
+.slide-prev-leave-to {
+  transform: translateX(100%);
+}
+
+/* Domyślny stan gdy obraz jest na środku */
+.slide-next-enter-to,
+.slide-next-leave-from,
+.slide-prev-enter-to,
+.slide-prev-leave-from {
+  transform: translateX(0);
+}
+</style>
