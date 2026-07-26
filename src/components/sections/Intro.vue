@@ -3,7 +3,12 @@ import ContentBlock from '@/components/ui/ContentBlock.vue'
 import Buttons from '@/components/ui/Buttons.vue'
 
 import buttonArrowDown from '@/assets/icons/buttonArrowDown.svg'
+import arrowLeft from '@/assets/icons/arrowLeft.svg'
+import arrowRight from '@/assets/icons/arrowRight.svg'
+
 import Image from '@/assets/images/intro-image.webp'
+import Image2 from '@/assets/images/intro-image2.webp'
+import Image3 from '@/assets/images/intro-image3.webp'
 </script>
 
 <template>
@@ -43,6 +48,25 @@ import Image from '@/assets/images/intro-image.webp'
           fetchpriority="high"
           decoding="sync"
         />
+
+        <!-- Slider -->
+        <div class="absolute bottom-0 right-0 flex bg-white z-10">
+          <button
+            type="button"
+            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white hover:bg-neutral-100 transition-colors"
+            aria-label="Poprzedni slajd"
+          >
+            <img :src="arrowRight" alt="strzalkaWprawo">
+          </button>
+          
+          <button
+            type="button"
+            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white hover:bg-neutral-100 transition-colors"
+            aria-label="Następny slajd"
+          >
+            <img :src="arrowLeft" alt="strzalkaWlewo">
+          </button>
+        </div>
       </div>
     </div>
   </section>
