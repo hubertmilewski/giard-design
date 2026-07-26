@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import ContentBlock from '@/components/ui/ContentBlock.vue'
 import Buttons from '@/components/ui/Buttons.vue'
 
@@ -7,22 +7,41 @@ import buttonArrowDown from '@/assets/icons/buttonArrowDown.svg'
 import arrowLeft from '@/assets/icons/arrowLeft.svg'
 import arrowRight from '@/assets/icons/arrowRight.svg'
 
-import Image from '@/assets/images/intro-image.webp'
-import Image2 from '@/assets/images/intro-image2.webp'
-import Image3 from '@/assets/images/intro-image3.webp'
+import IntroImage from '@/assets/images/intro-image.webp'
+import IntroImage2 from '@/assets/images/intro-image2.webp'
+import IntroImage3 from '@/assets/images/intro-image3.webp'
 
 type Slide = { id: number; src: string; alt: string }
 
 const slides: Slide[] = [
-  { id: 1, src: Image, alt: 'Zdjecie ogrodu - realizacja 1' },
-  { id: 2, src: Image2, alt: 'Zdjecie ogrodu - realizacja 2' },
-  { id: 3, src: Image3, alt: 'Zdjecie ogrodu - realizacja 3' },
+  { id: 1, src: IntroImage, alt: 'Zdjecie ogrodu - realizacja 1' },
+  { id: 2, src: IntroImage2, alt: 'Zdjecie ogrodu - realizacja 2' },
+  { id: 3, src: IntroImage3, alt: 'Zdjecie ogrodu - realizacja 3' },
 ]
 
 const currentIndex = ref(0)
 const currentSlide = computed<Slide>(() => slides[currentIndex.value] ?? slides[0]!)
 
 const transitionName = ref('slide-next')
+let autoSlideTimer: number | undefined
+
+onMounted(() => {
+  slides.forEach((slide) => {
+    const img = new window.Image()
+    img.src = slide.src
+  })
+
+  autoSlideTimer = window.setInterval(() => {
+    transitionName.value = 'slide-next'
+    currentIndex.value = (currentIndex.value + 1) % slides.length
+  }, 5000)
+})
+
+onUnmounted(() => {
+  if (autoSlideTimer) {
+    window.clearInterval(autoSlideTimer)
+  }
+})
 
 const nextSlide = () => {
   transitionName.value = 'slide-next'
@@ -111,7 +130,7 @@ const prevSlide = () => {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* nowe wjeżdża z prawej, stare odjeżdża w lewo */
+/* Nowe wjeżdża z prawej, stare odjeżdża w lewo */
 .slide-next-enter-from {
   transform: translateX(100%);
 }
@@ -119,7 +138,7 @@ const prevSlide = () => {
   transform: translateX(-100%);
 }
 
-/* nowe wjeżdża z lewej, stare odjeżdża w prawo */
+/* Nowe wjeżdża z lewej, stare odjeżdża w prawo */
 .slide-prev-enter-from {
   transform: translateX(-100%);
 }
