@@ -26,11 +26,6 @@ const transitionName = ref('slide-next')
 let autoSlideTimer: number | undefined
 
 onMounted(() => {
-  slides.forEach((slide) => {
-    const img = new window.Image()
-    img.src = slide.src
-  })
-
   autoSlideTimer = window.setInterval(() => {
     transitionName.value = 'slide-next'
     currentIndex.value = (currentIndex.value + 1) % slides.length
@@ -97,7 +92,10 @@ const prevSlide = () => {
             :alt="currentSlide.alt"
             class="absolute inset-0 w-full h-full object-cover"
             fetchpriority="high"
-            decoding="sync"
+            loading="eager"
+            decoding="async"
+            width="1376"
+            height="1474"
           />
         </Transition>
 
