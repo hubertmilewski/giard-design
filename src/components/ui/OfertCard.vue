@@ -20,7 +20,7 @@ withDefaults(defineProps<Props>(), {
 <template>
   <article
     :class="[
-      'bg-white rounded-[28px] px-10 py-12.5 flex flex-col items-start h-full',
+      'bg-white rounded-[28px] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12.5 flex flex-col items-start h-full',
       cardClass,
     ]"
   >
@@ -36,11 +36,11 @@ withDefaults(defineProps<Props>(), {
     </div>
 
     <!-- Tytuł -->
-    <h3 class="text-3xl font-heading font-medium mb-3">
+    <h3 class="font-heading font-medium mb-3 text-[18px] sm:text-[20px] md:text-[22px] lg:text-3xl">
       {{ title }}
     </h3>
 
-    <p class="text-[14px] leading-relaxed mb-15.75">
+    <p class="text-[14px] leading-relaxed mb-6 sm:mb-10 md:mb-12 lg:mb-15.75">
       {{ description }}
     </p>
 

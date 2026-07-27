@@ -6,7 +6,7 @@ import Ofert from '@/components/sections/Ofert.vue'
 
 <template>
   <Navbar />
-  <Intro />
+  <Intro class="pt-18" />
   <Ofert />
 </template>
 
