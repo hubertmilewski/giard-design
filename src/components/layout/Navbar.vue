@@ -45,6 +45,9 @@ const searchInputMobileRef = ref<HTMLInputElement | null>(null)
 
 const mobileMenuOpen = ref(false)
 
+const isNavbarHidden = ref(false)
+let lastScrollY = 0
+
 const footerItems: FooterItem[] = [
   { label: 'Kontakt', href: '/kontakt' },
   { label: 'Instagram', href: '#' },
@@ -82,7 +85,7 @@ function toggleMobileMenu() {
   mobileMenuOpen.value = !mobileMenuOpen.value
   if (mobileMenuOpen.value) {
     closeSearch()
-    document.body.style.overflow = 'hidden' // Blokada scrollowania strony w tle podczas używania menu na telefonie
+    document.body.style.overflow = 'hidden' 
   } else {
     document.body.style.overflow = ''
     closeDropdown()
@@ -106,20 +109,53 @@ function handleDocumentKeydown(event: KeyboardEvent) {
   }
 }
 
+function handleScroll() {
+  const currentScrollY = window.scrollY
+
+  if (currentScrollY <= 0) {
+    isNavbarHidden.value = false
+    lastScrollY = currentScrollY
+    return
+  }
+
+  if (mobileMenuOpen.value) {
+    isNavbarHidden.value = false
+    lastScrollY = currentScrollY
+    return
+  }
+
+  if (currentScrollY > lastScrollY && currentScrollY > 50) {
+    isNavbarHidden.value = true 
+    closeDropdown() 
+    closeSearch()
+  } else if (currentScrollY < lastScrollY) {
+    isNavbarHidden.value = false 
+  }
+
+  lastScrollY = currentScrollY
+}
+
 onMounted(() => {
   document.addEventListener('click', handleDocumentClick)
   document.addEventListener('keydown', handleDocumentKeydown)
+  window.addEventListener('scroll', handleScroll, { passive: true })
 })
 
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleDocumentClick)
   document.removeEventListener('keydown', handleDocumentKeydown)
+  window.removeEventListener('scroll', handleScroll)
   document.body.style.overflow = ''
 })
 </script>
 
 <template>
-  <header class="w-full bg-white relative z-50">
+  <header 
+    :class="[
+      'w-full bg-white fixed top-0 z-50 transition-transform duration-300 ease-in-out',
+      isNavbarHidden ? '-translate-y-full' : 'translate-y-0'
+    ]"
+  >
     <nav ref="navRef" class="container-custom flex items-center justify-between relative py-6">
       <!-- Lewa strona -->
       <div
@@ -134,7 +170,7 @@ onBeforeUnmount(() => {
 
       <!-- Widok dekstopowy (od lg w górę) -->
       <div class="hidden lg:flex items-center">
-        <!-- Kontener utrzymuje szerokość nawigacji (pozowala to również na dopasowanie miejsca do wyszukiania)-->
+        <!-- Kontener utrzymuje szerokość nawigacji -->
         <div class="relative flex items-center">
           <ul
             class="flex gap-x-12 transition-all duration-300 ease-out"
