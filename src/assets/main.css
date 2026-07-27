@@ -15,6 +15,7 @@
 
   --color-default: #111111; /* kolor tekstu */
   --color-primary: #1B5B31; /* kolor akcetntu dla przcisków */
+  --color-base: #F5F0EC; /* kolor akcetntu dla przcisków */
   --color-bg-base: #F5F0EC; /* szare tło */
   --color-bg-sand: #DCC1AB; /* ciemniejsze beżowe tło */
   --color-bg-dark: #111111; /* Ciemne tło pod stopkę */
