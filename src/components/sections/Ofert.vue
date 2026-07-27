@@ -2,9 +2,9 @@
 import ContentBlock from '@/components/ui/ContentBlock.vue'
 import OfertCard from '@/components/ui/OfertCard.vue'
 
-import Pen from '@/assets/icons/pencile.svg'
-import Eye from '@/assets/icons/eye.svg'
-import Stars from '@/assets/icons/stars.svg'
+import Pen from '@/assets/icons/ofert/pencile.svg'
+import Eye from '@/assets/icons/ofert/eye.svg'
+import Stars from '@/assets/icons/ofert/stars.svg'
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Buttons from '@/components/ui/Buttons.vue'
 import logo from '@/assets/icons/logo.svg'
-import adRespectLogo from '@/assets/icons/adrespectLogo.webp'
+import adRespectLogo from '@/assets/icons/footer/adrespectLogo.webp'
 
 const footerLinks = [
   { label: 'Kontakt', href: '/kontakt' },

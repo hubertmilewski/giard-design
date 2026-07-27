@@ -3,9 +3,9 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import ContentBlock from '@/components/ui/ContentBlock.vue'
 import Buttons from '@/components/ui/Buttons.vue'
 
-import buttonArrowDown from '@/assets/icons/buttonArrowDown.svg'
-import arrowLeft from '@/assets/icons/arrowLeft.svg'
-import arrowRight from '@/assets/icons/arrowRight.svg'
+import buttonArrowDown from '@/assets/icons/button/buttonArrowDown.svg'
+import arrowLeft from '@/assets/icons/slider/arrowLeft.svg'
+import arrowRight from '@/assets/icons/slider/arrowRight.svg'
 
 import IntroImage from '@/assets/images/intro-image.webp'
 import IntroImage2 from '@/assets/images/intro-image2.webp'

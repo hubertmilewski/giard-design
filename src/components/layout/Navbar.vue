@@ -2,10 +2,10 @@
 import { nextTick, ref, onMounted, onBeforeUnmount } from 'vue'
 
 import logo from '@/assets/icons/logo.svg'
-import arrowDown from '@/assets/icons/arrowDown.svg'
-import search from '@/assets/icons/search.svg'
-import hamburger from '@/assets/icons/hamburger.svg'
-import close from '@/assets/icons/close.svg'
+import arrowDown from '@/assets/icons/menu/arrowDown.svg'
+import search from '@/assets/icons/menu/search.svg'
+import hamburger from '@/assets/icons/menu/hamburger.svg'
+import close from '@/assets/icons/menu/close.svg'
 
 interface NavItem {
   label: string
