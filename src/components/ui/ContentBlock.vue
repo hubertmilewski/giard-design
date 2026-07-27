@@ -13,8 +13,13 @@ defineProps<{
       <slot name="tag">{{ tag }}</slot>
     </span>
 
-    <!-- Nagłówek (używamy slotu, żeby móc wstawić np. <em> do kursywy) -->
-    <h2 :class="['font-heading font-medium text-[48px]', titleClass]">
+    <!-- Naglowek -->
+    <h2
+      :class="[
+        'font-heading font-medium text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-tight',
+        titleClass,
+      ]"
+    >
       <slot name="title" />
     </h2>
 
@@ -24,7 +29,7 @@ defineProps<{
     </p>
 
     <!-- Przyciski CTA -->
-    <div v-if="$slots.actions" class="flex flex-wrap gap-9 mt-18">
+    <div v-if="$slots.actions" class="flex flex-wrap gap-9 mt-6 lg:mt-18">
       <slot name="actions" />
     </div>
   </div>
