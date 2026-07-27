@@ -25,5 +25,13 @@ const secondaryHref = props.secondaryHref ?? '#'
     >
       <slot name="secondary" />
     </a>
+
+    <a
+      v-if="$slots['secondary-white']"
+      :href="secondaryHref"
+      class="inline-flex items-center justify-center rounded-full border border-white px-6 py-3 text-sm text-white transition duration-200 hover:bg-white/10"
+    >
+      <slot name="secondary-white" />
+    </a>
   </div>
 </template>

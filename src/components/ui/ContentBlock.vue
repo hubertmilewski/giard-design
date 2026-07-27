@@ -24,7 +24,7 @@ defineProps<{
     </h2>
 
     <!-- Opis -->
-    <p :class="['text-base text-[16px]', descriptionClass]">
+    <p :class="['text-[16px]', descriptionClass]">
       <slot name="description" />
     </p>
 
