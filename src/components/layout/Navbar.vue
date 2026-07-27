@@ -2,10 +2,10 @@
 import { nextTick, ref, onMounted, onBeforeUnmount } from 'vue'
 
 import logo from '@/assets/icons/logo.svg'
-import arrowDown from '@/assets/icons/arrowDown.svg'
-import search from '@/assets/icons/search.svg'
-import hamburger from '@/assets/icons/hamburger.svg'
-import close from '@/assets/icons/close.svg'
+import arrowDown from '@/assets/icons/menu/arrowDown.svg'
+import search from '@/assets/icons/menu/search.svg'
+import hamburger from '@/assets/icons/menu/hamburger.svg'
+import close from '@/assets/icons/menu/close.svg'
 
 interface NavItem {
   label: string
@@ -85,7 +85,7 @@ function toggleMobileMenu() {
   mobileMenuOpen.value = !mobileMenuOpen.value
   if (mobileMenuOpen.value) {
     closeSearch()
-    document.body.style.overflow = 'hidden' 
+    document.body.style.overflow = 'hidden'
   } else {
     document.body.style.overflow = ''
     closeDropdown()
@@ -125,11 +125,11 @@ function handleScroll() {
   }
 
   if (currentScrollY > lastScrollY && currentScrollY > 50) {
-    isNavbarHidden.value = true 
-    closeDropdown() 
+    isNavbarHidden.value = true
+    closeDropdown()
     closeSearch()
   } else if (currentScrollY < lastScrollY) {
-    isNavbarHidden.value = false 
+    isNavbarHidden.value = false
   }
 
   lastScrollY = currentScrollY
@@ -150,10 +150,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header 
+  <header
     :class="[
       'w-full bg-white fixed top-0 z-50 transition-transform duration-300 ease-in-out',
-      isNavbarHidden ? '-translate-y-full' : 'translate-y-0'
+      isNavbarHidden ? '-translate-y-full' : 'translate-y-0',
     ]"
   >
     <nav ref="navRef" class="container-custom flex items-center justify-between relative py-6">
@@ -165,7 +165,9 @@ onBeforeUnmount(() => {
           'lg:opacity-100 lg:pointer-events-auto',
         ]"
       >
-        <img :src="logo" alt="Logo" class="h-4.75 w-[114.37px]"/>
+        <a href="/" class="inline-flex items-center">
+          <img :src="logo" alt="Logo" class="h-4.75 w-[114.37px]" />
+        </a>
       </div>
 
       <!-- Widok dekstopowy (od lg w górę) -->

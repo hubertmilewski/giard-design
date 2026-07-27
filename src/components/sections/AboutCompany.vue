@@ -3,7 +3,7 @@ import ContentBlock from '@/components/ui/ContentBlock.vue'
 import Buttons from '@/components/ui/Buttons.vue'
 
 import AboutImage from '@/assets/images/about-company.webp'
-import arrow from '@/assets/icons/arrowOfert.svg'
+import arrow from '@/assets/icons/button/arrowOfert.svg'
 </script>
 
 <template>
