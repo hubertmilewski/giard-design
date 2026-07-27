@@ -9,11 +9,11 @@ import Stars from '@/assets/icons/stars.svg'
 
 <template>
   <main class="w-full bg-bg-base">
-    <section class="container-custom mx-auto pt-30 pb-40">
-      <div class="lg:pl-30 w-full mb-24">
+    <section class="container-custom mx-auto pt-12 md:pt-20 lg:pt-30 pb-12 md:pb-20 lg:pb-40">
+      <div class="w-full mb-12 md:mb-24 pl-6 sm:pl-12 lg:pl-30">
         <ContentBlock
-          titleClass="text-[48px]"
-          descriptionClass="mt-8 max-w-[730px]"
+          titleClass="text-[32px] md:text-[40px] lg:text-[48px]"
+          descriptionClass="mt-4 md:mt-8 max-w-[730px]"
         >
           <template #tag> Oferta </template>
           <template #title> Działamy <span class="italic">kompleksowo</span></template>
@@ -25,7 +25,7 @@ import Stars from '@/assets/icons/stars.svg'
         </ContentBlock>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-16">
         <OfertCard
           :iconSrc="Pen"
           title="Projekty"
