@@ -61,7 +61,7 @@ const prevSlide = () => {
       <div
         class="lg:col-span-6 flex flex-col justify-center py-16 lg:py-0 pl-6 sm:pl-12 lg:pl-[max(1.5rem,calc((100vw-var(--container-max,1280px))/2))]"
       >
-        <ContentBlock titleClass="text-[40px] lg:text-[60px] leading-[1.1]">
+        <ContentBlock titleClass="text-[40px] lg:text-[60px] leading-[1.1]" descriptionClass="mt-11 max-w-[489px]">
           <template #title>
             Nowoczesna aranżacja <br class="hidden lg:block" />Twojego ogrodu
           </template>
