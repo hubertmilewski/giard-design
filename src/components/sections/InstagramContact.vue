@@ -11,7 +11,7 @@ import Buttons from '@/components/ui/Buttons.vue'
       >
         <!-- Lewa strona -->
         <div class="w-full sm:max-w-md lg:max-w-none lg:w-auto text-left">
-          <h2 class="font-heading text-[26px] sm:text-[32px] lg:text-[40px] leading-tight text-white">
+          <h2 class="font-heading text-[26px] sm:text-[32px] lg:text-[40px] leading-tight text-base">
             Zostańmy w kontakcie!<br />
             Znajdziesz nas na <span class="italic font-medium">Instagramie.</span>
           </h2>
@@ -19,13 +19,13 @@ import Buttons from '@/components/ui/Buttons.vue'
 
         <!-- Prawa strona -->
         <div class="w-full sm:max-w-md lg:max-w-none lg:w-auto mt-8 sm:mt-10 lg:mt-0 flex flex-col items-start gap-5 sm:gap-6">
-          <p class="text-[15px] sm:text-[16px] text-white leading-relaxed">
+          <p class="text-[15px] sm:text-[16px] text-base leading-relaxed">
             Śledź nasze<br class="hidden sm:block" />
             najnowsze realizacje!
           </p>
 
           <Buttons secondaryHref="https://instagram.com">
-            <template #primary-white>Instagram</template>
+            <template #primary-base>Instagram</template>
           </Buttons>
         </div>
       </div>

@@ -34,9 +34,9 @@ import arrow from '@/assets/icons/arrowOfert.svg'
 
         <div class="w-full lg:col-span-5 py-12 sm:py-16 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-0">
           <div class="max-w-130 mx-auto lg:mx-0">
-            <ContentBlock titleClass="text-white" descriptionClass="text-white mt-10 lg:mt-8">
+            <ContentBlock titleClass="text-base" descriptionClass="text-base mt-10 lg:mt-8">
               <template #tag>
-                <span class="text-[12px] text-white"> O firmie </span>
+                <span class="text-[12px] text-base"> O firmie </span>
               </template>
 
               <template #title>
@@ -54,7 +54,7 @@ import arrow from '@/assets/icons/arrowOfert.svg'
 
               <template #actions>
                 <Buttons primaryHref="/kontakt">
-                  <template #secondary-white>
+                  <template #secondary-base>
                     Poznaj nas bliżej
                     <img :src="arrow" alt="" class="ml-2 filter brightness-0 invert" />
                   </template>

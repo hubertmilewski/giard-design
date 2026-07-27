@@ -100,10 +100,10 @@ const prevSlide = () => {
         </Transition>
 
         <!-- Slider -->
-        <div class="absolute bottom-0 right-0 flex bg-white z-10">
+        <div class="absolute bottom-0 right-0 flex bg-base z-10">
           <button
             type="button"
-            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white hover:bg-neutral-100 transition-colors"
+            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-base hover:bg-neutral-100 transition-colors"
             aria-label="Poprzedni slajd"
             @click="prevSlide"
           >
@@ -112,7 +112,7 @@ const prevSlide = () => {
 
           <button
             type="button"
-            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white hover:bg-neutral-100 transition-colors"
+            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-base hover:bg-neutral-100 transition-colors"
             aria-label="Następny slajd"
             @click="nextSlide"
           >
