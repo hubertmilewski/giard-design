@@ -4,6 +4,7 @@ import Intro from '@/components/sections/Intro.vue'
 import AboutCompany from '@/components/sections/AboutCompany.vue'
 import Ofert from '@/components/sections/Ofert.vue'
 import InstagramContact from '@/components/sections/InstagramContact.vue'
+import Footer from '@/components/layout/Footer.vue'
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import InstagramContact from '@/components/sections/InstagramContact.vue'
   <Ofert />
   <AboutCompany />
   <InstagramContact />
+  <Footer />
 </template>
 
 <style scoped></style>
