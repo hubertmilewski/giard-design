@@ -312,12 +312,12 @@ onBeforeUnmount(() => {
 
       <!-- Wysuwane menu mobile -->
       <div
-        class="absolute top-full left-0 w-full bg-white lg:hidden transition-all duration-300 ease-in-out overflow-y-auto flex flex-col shadow-lg"
-        style="height: calc(100dvh - 70px)"
+        class="fixed inset-x-0 top-18.25 bg-white lg:hidden transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-y-auto flex flex-col shadow-2xl z-40"
+        style="height: calc(100dvh - 73px)"
         :class="
           mobileMenuOpen
-            ? 'translate-x-0 opacity-100 border-t border-base'
-            : 'translate-x-full opacity-0 pointer-events-none'
+            ? 'translate-y-0 opacity-100 border-t border-base pointer-events-auto'
+            : '-translate-y-3 opacity-0 pointer-events-none'
         "
       >
         <div class="flex flex-col min-h-full py-8 container-custom">
