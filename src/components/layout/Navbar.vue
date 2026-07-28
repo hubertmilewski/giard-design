@@ -158,13 +158,7 @@ onBeforeUnmount(() => {
   >
     <nav ref="navRef" class="container-custom flex items-center justify-between relative py-6">
       <!-- Lewa strona -->
-      <div
-        :class="[
-          'transition-opacity duration-200',
-          searchOpen ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto',
-          'lg:opacity-100 lg:pointer-events-auto',
-        ]"
-      >
+      <div class="shrink-0 flex items-center">
         <a href="/" class="inline-flex items-center">
           <img :src="logo" alt="Logo" class="h-4.75 w-[114.37px]" />
         </a>
@@ -186,7 +180,7 @@ onBeforeUnmount(() => {
               <template v-if="item.children">
                 <button
                   type="button"
-                  class="font-normal transition-colors duration-150 hover:text-slate-900"
+                  class="font-normal transition-colors duration-150 hover:text-default text-default"
                   :aria-expanded="activeDropdown === item.label"
                   @click="toggleDropdown(item.label)"
                 >
@@ -206,7 +200,7 @@ onBeforeUnmount(() => {
                 <!-- Dropdown Desktop -->
                 <ul
                   :class="[
-                    'absolute top-full left-0 mt-4 w-48 bg-white border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] py-2 z-10 transition-all duration-200 ease-out',
+                    'absolute top-full left-0 mt-4 w-48 bg-white border border-base shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] py-2 z-10 transition-all duration-200 ease-out',
                     activeDropdown === item.label
                       ? 'opacity-100 translate-y-0 pointer-events-auto'
                       : 'opacity-0 translate-y-2 pointer-events-none',
@@ -216,7 +210,7 @@ onBeforeUnmount(() => {
                     <a
                       :href="child.href"
                       @click="closeDropdown(); if (mobileMenuOpen) toggleMobileMenu();"
-                      class="block px-5 py-2.5 text-sm text-slate-500 transition-colors duration-150 hover:text-slate-900 hover:bg-slate-50/80"
+                      class="block px-5 py-2.5 text-sm text-default/70 transition-colors duration-150 hover:text-default hover:bg-bg-base"
                     >
                       {{ child.label }}
                     </a>
@@ -228,7 +222,7 @@ onBeforeUnmount(() => {
                 <a
                   :href="item.href"
                   @click="closeDropdown(); if (mobileMenuOpen) toggleMobileMenu();"
-                  class="font-normal transition-colors duration-150 hover:text-slate-900"
+                  class="font-normal transition-colors duration-150 hover:text-default text-default"
                 >
                   {{ item.label }}
                 </a>
@@ -250,7 +244,7 @@ onBeforeUnmount(() => {
               v-model="searchQuery"
               type="search"
               placeholder="Szukaj..."
-              class="w-full text-sm text-slate-900 bg-transparent border-none border-b border-slate-300 outline-none focus:ring-0 placeholder-slate-500"
+              class="w-full py-1 text-sm text-default bg-transparent border-b border-bg-sand outline-none focus:ring-0 placeholder-default/50"
             />
           </div>
         </div>
@@ -259,7 +253,7 @@ onBeforeUnmount(() => {
         <div class="relative flex items-center ml-12">
           <button
             type="button"
-            class="relative z-20 inline-flex items-center justify-center transition-transform duration-200 hover:scale-110"
+            class="relative z-20 inline-flex items-center justify-center transition-transform duration-200 hover:scale-110 cursor-pointer"
             @click="toggleSearch"
             :aria-expanded="searchOpen"
             aria-label="Otwórz wyszukiwanie"
@@ -270,14 +264,14 @@ onBeforeUnmount(() => {
       </div>
 
       <!-- Widok mobile -->
-      <div class="flex lg:hidden items-center gap-4">
+      <div class="flex lg:hidden items-center gap-2 flex-1 justify-end relative">
         <!-- Pole wyszukiwania mobile -->
         <div
-          class="absolute inset-y-0 left-0 right-0 bg-white flex items-center z-10 transition-all duration-300 ease-out px-4"
+          class="flex-1 transition-all duration-300 ease-out ml-4 sm:ml-8 mr-1 overflow-hidden"
           :class="
             searchOpen
-              ? 'opacity-100 pointer-events-auto translate-x-0'
-              : 'opacity-0 pointer-events-none -translate-x-4'
+              ? 'opacity-100 pointer-events-auto max-w-full'
+              : 'opacity-0 pointer-events-none max-w-0'
           "
         >
           <input
@@ -285,29 +279,35 @@ onBeforeUnmount(() => {
             v-model="searchQuery"
             type="search"
             placeholder="Szukaj..."
-            class="w-full py-2 text-sm text-slate-900 bg-transparent border-none border-b border-slate-300 outline-none focus:ring-0 placeholder-slate-500"
+            class="w-full py-1 text-sm text-default bg-transparent border-b border-bg-sand outline-none focus:ring-0 placeholder-default/50"
           />
         </div>
 
+        <!-- Przycisk Lupy Mobile z animacja -->
         <button
           type="button"
-          class="relative z-20 inline-flex items-center justify-center p-2 transition-transform hover:scale-110"
+          class="relative z-20 inline-flex items-center justify-center p-2 transition-all duration-300 ease-out hover:scale-110 active:scale-95 cursor-pointer"
           @click="toggleSearch"
           aria-label="Otwórz wyszukiwanie"
         >
-          <img :src="search" alt="Szukaj" class="w-5 h-5" />
+          <img :src="search" alt="Szukaj" class="w-5 h-5 transition-transform duration-300" :class="searchOpen ? 'rotate-90' : 'rotate-0'" />
         </button>
 
         <!-- Przycisk Menu Mobilnego (Hamburger i X) -->
-        <button
-          type="button"
-          class="relative z-20 inline-flex items-center justify-center text-slate-900"
-          @click="toggleMobileMenu"
-          aria-label="Otwórz menu"
+        <div
+          class="transition-all duration-300 ease-out overflow-hidden flex items-center justify-center"
+          :class="searchOpen ? 'max-w-0 opacity-0 pointer-events-none p-0' : 'max-w-10 opacity-100 p-1'"
         >
-          <img v-if="!mobileMenuOpen" :src="hamburger" alt="Otwórz menu" class="h-6 w-6" />
-          <img v-else :src="close" alt="Zamknij menu" class="h-6 w-6" />
-        </button>
+          <button
+            type="button"
+            class="relative z-20 inline-flex items-center justify-center text-default cursor-pointer"
+            @click="toggleMobileMenu"
+            aria-label="Otwórz menu"
+          >
+            <img v-if="!mobileMenuOpen" :src="hamburger" alt="Otwórz menu" class="h-6 w-6" />
+            <img v-else :src="close" alt="Zamknij menu" class="h-6 w-6" />
+          </button>
+        </div>
       </div>
 
       <!-- Wysuwane menu mobile -->
@@ -316,7 +316,7 @@ onBeforeUnmount(() => {
         style="height: calc(100dvh - 70px)"
         :class="
           mobileMenuOpen
-            ? 'translate-x-0 opacity-100 border-t border-slate-50'
+            ? 'translate-x-0 opacity-100 border-t border-base'
             : 'translate-x-full opacity-0 pointer-events-none'
         "
       >
@@ -326,7 +326,7 @@ onBeforeUnmount(() => {
               <template v-if="item.children">
                 <button
                   type="button"
-                  class="w-full flex items-center justify-between text-[22px] text-slate-900 transition-colors"
+                  class="w-full flex items-center justify-between text-[22px] text-default transition-colors"
                   @click="toggleDropdown(item.label)"
                 >
                   <span>{{ item.label }}</span>
@@ -334,7 +334,7 @@ onBeforeUnmount(() => {
                     :src="arrowDown"
                     alt=""
                     aria-hidden="true"
-                    class="h-5 w-5 text-slate-400 transition-transform duration-200"
+                    class="h-5 w-5 opacity-60 transition-transform duration-200"
                     :class="activeDropdown === item.label ? 'rotate-180' : ''"
                   />
                 </button>
@@ -348,12 +348,12 @@ onBeforeUnmount(() => {
                       : 'max-h-0 opacity-0'
                   "
                 >
-                  <ul class="flex flex-col gap-4 pl-4 border-l border-slate-100">
+                  <ul class="flex flex-col gap-4 pl-4 border-l border-base">
                     <li v-for="child in item.children" :key="child.href">
                       <a
                         :href="child.href"
                         @click="toggleMobileMenu()"
-                        class="block text-[16px] text-slate-500 hover:text-slate-900"
+                        class="block text-[16px] text-default/70 hover:text-default"
                       >
                         {{ child.label }}
                       </a>
@@ -366,7 +366,7 @@ onBeforeUnmount(() => {
                 <a
                   :href="item.href"
                   @click="toggleMobileMenu()"
-                  class="block w-full text-[22px] text-slate-900 transition-colors"
+                  class="block w-full text-[22px] text-default transition-colors"
                 >
                   {{ item.label }}
                 </a>
@@ -375,13 +375,13 @@ onBeforeUnmount(() => {
           </ul>
 
           <!-- Skróty ze stopki -->
-          <div class="mt-auto flex flex-wrap gap-x-6 pt-12 text-[14px] text-slate-500">
+          <div class="mt-auto flex flex-wrap gap-x-6 pt-12 text-[14px] text-default/60">
             <a
               v-for="item in footerItems"
               :key="item.label"
               :href="item.href"
               @click="toggleMobileMenu()"
-              class="hover:text-slate-900 transition-colors"
+              class="hover:text-default transition-colors"
             >
               {{ item.label }}
             </a>
