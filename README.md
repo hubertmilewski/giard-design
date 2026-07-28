@@ -1,48 +1,9 @@
-# giard-design
+# GiardDesign — Zadanie Rekrutacyjne
 
-This template should help get you started developing with Vue 3 in Vite.
+Cześć, podczas tworzenia projektu zdecydowałem się na wybór frameworka Vue.js oraz TailwindCSS, kierując się stackiem technologicznym wykorzystywanym w Waszej firmie. W wolnym czasie szlifowałem składnię Vue oraz zasady budowania aplikacji w tym ekosystemie, dzięki temu sprawnie podzieliłem widoki na komponenty wielokrotnego użytku (np. bloki treści, karty ofertowe czy przyciski). Dzięki temu uniknąłem powtarzania kodu, zachowując przy tym przejrzystą i poukładaną strukturę katalogów w całym projekcie.
 
-## Recommended IDE Setup
+Główny nacisk kładłem na odwzorowanie czystego, responsywnego i estetycznego interfejsu z dbałością o najwyższą optymalizację. Zamiast ciężkich czy przytłaczających efektów zastosowałem delikatne, płynne animacje scrollowania i przejść, które podnoszą jakość UX bez obciążania przeglądarki. Do stylowania wykorzystałem TailwindCSS wraz z centralną konfiguracją zmiennych motywu, co zagwarantowało spójność kolorystyczną oraz typograficzną na wszystkich urządzeniach.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Duży nacisk położyłem na wydajność serwowanych zasobów oraz szybkość wczytywania. Obrazy zostały skompresowane i dostosowane do nowoczesnych formatów WebP, a w pliku HTML zastosowałem preloading krytycznych zasobów oraz odpowiednią hierarchię nagłówków pod kątem SEO (meta tagi czy robots.txt z racji zakresu zadania pominąłem).
 
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
+Całość prac realizowałem w oparciu o osobną gałąź w systemie Git. Po wprowadzeniu każdej zmiany wykonywałem build produkcyjny (`npm run build` & `npm run preview`) i skrupulatnie weryfikowałem wyniki w narzędziu Lighthouse bezpośrednio w DevTools. Po uzyskaniu satysfakcjonujących rezultatów wdrażałem zmiany na główną gałąź. Finalne raporty z testów wydajnościowych zostały załączone w katalogu public: [Raport Desktop](./public/LightHouseDesktop.html) oraz [Raport Mobile](./public/LightHouseMobile.html).
