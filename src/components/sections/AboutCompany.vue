@@ -7,7 +7,7 @@ import arrow from '@/assets/icons/button/arrowOfert.svg'
 </script>
 
 <template>
-  <section class="relative w-full bg-primary overflow-hidden">
+  <section id="o-firmie" class="relative w-full bg-primary overflow-hidden">
     <div class="w-full h-72 sm:h-96 lg:hidden relative z-0">
       <img
         :src="AboutImage"
@@ -53,7 +53,7 @@ import arrow from '@/assets/icons/button/arrowOfert.svg'
               </template>
 
               <template #actions>
-                <Buttons primaryHref="/kontakt">
+                <Buttons primaryHref="#kontakt">
                   <template #secondary-base>
                     Poznaj nas bliżej
                     <img :src="arrow" alt="" class="ml-2 filter brightness-0 invert" />

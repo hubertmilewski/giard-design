@@ -8,7 +8,7 @@ import Stars from '@/assets/icons/ofert/stars.svg'
 </script>
 
 <template>
-  <main class="w-full bg-bg-base">
+  <main id="oferta" class="w-full bg-bg-base">
     <section class="container-custom mx-auto pt-12 md:pt-20 lg:pt-30 pb-12 md:pb-20 lg:pb-40">
       <div class="w-full mb-12 md:mb-24 px-4 sm:px-6 lg:px-0">
         <ContentBlock
@@ -32,21 +32,21 @@ import Stars from '@/assets/icons/ofert/stars.svg'
           :iconSrc="Pen"
           title="Projekty"
           description="Zaprojektujemy Twój ogród w nowoczesnym stylu i z najlepszym wykorzystaniem istniejącej przestrzeni."
-          linkHref="/projekty"
+          linkHref="#realizacje"
         />
 
         <OfertCard
           :iconSrc="Eye"
           title="Wizualizacje"
           description="Przedstawimy Ci projekty koncepcyjne w postaci wirtualnego spaceru animowanego w technologii 3D."
-          linkHref="/projekty"
+          linkHref="#realizacje"
         />
 
         <OfertCard
           :iconSrc="Stars"
           title="Realizacje"
           description="Zrealizujemy Twoje marzenie przy użyciu najnowszych rozwiązań i zaawansowanych technologii."
-          linkHref="/projekty"
+          linkHref="#realizacje"
         />
       </div>
     </section>

@@ -70,7 +70,7 @@ const prevSlide = () => {
           </template>
 
           <template #actions>
-            <Buttons primaryHref="/oferta" secondaryHref="/kontakt">
+            <Buttons primaryHref="#kontakt" secondaryHref="#realizacje">
               <template #primary>Skontaktuj się z nami</template>
               <template #secondary>
                 Zobacz nasze realizacje

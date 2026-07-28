@@ -3,7 +3,7 @@ import Buttons from '@/components/ui/Buttons.vue'
 </script>
 
 <template>
-  <section class="w-full bg-bg-base overflow-hidden">
+  <section id="kontakt" class="w-full bg-bg-base overflow-hidden">
     <div class="mx-auto w-full max-w-360 px-4 py-8 sm:px-6 sm:py-12 lg:px-50 lg:py-15">
       
       <div 

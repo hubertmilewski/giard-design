@@ -95,7 +95,7 @@ function handleKeydown(e: KeyboardEvent) {
 </script>
 
 <template>
-  <section class="w-full bg-bg-sand overflow-hidden">
+  <section id="realizacje" class="w-full bg-bg-sand overflow-hidden">
     <div class="container-custom mx-auto">
       <div class="pt-30 pb-24">
         <ContentBlock titleClass="mt-[16px]" descriptionClass="hidden">

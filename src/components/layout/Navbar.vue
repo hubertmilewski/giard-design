@@ -23,17 +23,17 @@ const navItems: NavItem[] = [
   {
     label: 'Oferta',
     icon: arrowDown,
-    href: '/oferta',
+    href: '#oferta',
     children: [
-      { label: 'Projektowanie', href: '/oferta/projektowanie' },
-      { label: 'Wykonanie', href: '/oferta/wykonanie' },
-      { label: 'Doradztwo', href: '/oferta/doradztwo' },
-      { label: 'Autorzy', href: '/oferta/doradztwo' },
+      { label: 'Projektowanie', href: '#oferta' },
+      { label: 'Wykonanie', href: '#oferta' },
+      { label: 'Doradztwo', href: '#oferta' },
+      { label: 'Autorzy', href: '#o-firmie' },
     ],
   },
-  { label: 'O firmie', href: '/o-firmie' },
-  { label: 'Realizacje', href: '/realizacje' },
-  { label: 'Kontakt', href: '/kontakt' },
+  { label: 'O firmie', href: '#o-firmie' },
+  { label: 'Realizacje', href: '#realizacje' },
+  { label: 'Kontakt', href: '#kontakt' },
 ]
 
 const activeDropdown = ref<string | null>(null)
@@ -49,10 +49,10 @@ const isNavbarHidden = ref(false)
 let lastScrollY = 0
 
 const footerItems: FooterItem[] = [
-  { label: 'Kontakt', href: '/kontakt' },
-  { label: 'Instagram', href: '#' },
-  { label: 'Facebook', href: '#' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'Kontakt', href: '#kontakt' },
+  { label: 'Instagram', href: 'https://instagram.com' },
+  { label: 'Facebook', href: 'https://facebook.com' },
+  { label: 'LinkedIn', href: 'https://linkedin.com' },
 ]
 
 function toggleDropdown(label: string) {
@@ -215,6 +215,7 @@ onBeforeUnmount(() => {
                   <li v-for="child in item.children" :key="child.href">
                     <a
                       :href="child.href"
+                      @click="closeDropdown(); if (mobileMenuOpen) toggleMobileMenu();"
                       class="block px-5 py-2.5 text-sm text-slate-500 transition-colors duration-150 hover:text-slate-900 hover:bg-slate-50/80"
                     >
                       {{ child.label }}
@@ -226,6 +227,7 @@ onBeforeUnmount(() => {
               <template v-else>
                 <a
                   :href="item.href"
+                  @click="closeDropdown(); if (mobileMenuOpen) toggleMobileMenu();"
                   class="font-normal transition-colors duration-150 hover:text-slate-900"
                 >
                   {{ item.label }}
@@ -350,6 +352,7 @@ onBeforeUnmount(() => {
                     <li v-for="child in item.children" :key="child.href">
                       <a
                         :href="child.href"
+                        @click="toggleMobileMenu()"
                         class="block text-[16px] text-slate-500 hover:text-slate-900"
                       >
                         {{ child.label }}
@@ -362,6 +365,7 @@ onBeforeUnmount(() => {
               <template v-else>
                 <a
                   :href="item.href"
+                  @click="toggleMobileMenu()"
                   class="block w-full text-[22px] text-slate-900 transition-colors"
                 >
                   {{ item.label }}
@@ -376,6 +380,7 @@ onBeforeUnmount(() => {
               v-for="item in footerItems"
               :key="item.label"
               :href="item.href"
+              @click="toggleMobileMenu()"
               class="hover:text-slate-900 transition-colors"
             >
               {{ item.label }}
