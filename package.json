@@ -15,6 +15,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
     "@fontsource/montserrat": "^5.3.0",
+    "macy": "^2.5.1",
     "vue": "rc"
   },
   "devDependencies": {
