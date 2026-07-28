@@ -1,41 +1,33 @@
-/* Import fontow przez biblioteke fontsource z ograniczeniem do potrzebnych fontow*/ 
-@import "@fontsource/inter/latin-400.css";
-@import "@fontsource/inter/latin-ext-400.css";
-@import "@fontsource/inter/latin-500.css";
-@import "@fontsource/inter/latin-ext-500.css";
-@import "@fontsource/montserrat/latin-400.css";
-@import "@fontsource/montserrat/latin-ext-400.css";
-@import "@fontsource/montserrat/latin-500.css";
-@import "@fontsource/montserrat/latin-ext-500.css";
-@import "@fontsource/montserrat/latin-600.css";
-@import "@fontsource/montserrat/latin-ext-600.css";
-@import "@fontsource/montserrat/latin-700.css";
-@import "@fontsource/montserrat/latin-ext-700.css";
+/* Import fontow przez biblioteke fontsource z ograniczeniem do potrzebnych fontow*/
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/montserrat/latin-400.css';
+@import '@fontsource/montserrat/latin-500.css';
+@import '@fontsource/montserrat/latin-600.css';
+@import '@fontsource/montserrat/latin-700.css';
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  
-  --font-sans: 'Inter', sans-serif; /* Domyślny */  
+  --font-sans: 'Inter', sans-serif; /* Domyślny */
   --font-heading: 'Montserrat', sans-serif; /* Nagłówki */
 
   --color-default: #111111; /* kolor tekstu */
-  --color-primary: #1B5B31; /* kolor akcetntu dla przcisków */
-  --color-base: #F5F0EC; /* kolor akcetntu dla przcisków */
-  --color-bg-base: #F5F0EC; /* szare tło */
-  --color-bg-sand: #DCC1AB; /* ciemniejsze beżowe tło */
+  --color-primary: #1b5b31; /* kolor akcetntu dla przcisków */
+  --color-base: #f5f0ec; /* kolor akcetntu dla przcisków */
+  --color-bg-base: #f5f0ec; /* szare tło */
+  --color-bg-sand: #dcc1ab; /* ciemniejsze beżowe tło */
   --color-bg-dark: #111111; /* Ciemne tło pod stopkę */
 }
 
 @utility container-custom {
-
   width: 100%;
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem; /* 16 px na mobile */
   padding-right: 1rem;
-  
+
   @variant lg {
     padding-left: 89px;
     padding-right: 89px;
@@ -43,7 +35,6 @@
 }
 
 @layer base {
-  
   html,
   body {
     margin: 0;
@@ -52,8 +43,8 @@
 
   html {
     font-family: var(--font-sans);
-    color: var(--color-default); 
-    background-color: #FFFFFF;
+    color: var(--color-default);
+    background-color: #ffffff;
     scroll-behavior: smooth;
   }
 
