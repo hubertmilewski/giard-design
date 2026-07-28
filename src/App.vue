@@ -42,28 +42,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="animate-fade-in">
-    <Navbar />
-    <Intro class="pt-18" />
-    <Ofert />
-    <AboutCompany />
-    <Gallery />
-    <InstagramContact />
-    <Footer />
-  </div>
+  <Navbar />
+  <Intro class="pt-18" />
+  <Ofert />
+  <AboutCompany />
+  <Gallery />
+  <InstagramContact />
+  <Footer />
 </template>
 
-<style scoped>
-.animate-fade-in {
-  animation: fadeInPage 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeInPage {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-</style>
+<style scoped></style>
