@@ -70,6 +70,7 @@ const prevSlide = () => {
         class="lg:col-span-6 flex flex-col justify-center py-16 lg:py-0 px-4 sm:px-4 lg:px-0 lg:pl-[calc((100vw-1440px)/2+89px)] min-h-[60vh] lg:min-h-0"
       >
         <ContentBlock
+          :isH1="true"
           titleClass="text-[40px] lg:text-[60px] leading-[1.1]"
           descriptionClass="mt-11 max-w-[489px]"
         >

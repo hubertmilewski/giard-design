@@ -3,25 +3,27 @@ defineProps<{
   tag?: string
   titleClass?: string
   descriptionClass?: string
+  isH1?: boolean
 }>()
 </script>
 
 <template>
   <div class="flex flex-col items-start">
-    <!-- mała etykieta (np. "O firmie"), ale nie wymagana -->
+    <!-- etykieta (np. "O firmie"), ale nie wymagana -->
     <span v-if="tag || $slots.tag" class="text-primary text-[12px] mb-4">
       <slot name="tag">{{ tag }}</slot>
     </span>
 
     <!-- Naglowek -->
-    <h2
+    <component
+      :is="isH1 ? 'h1' : 'h2'"
       :class="[
         'font-heading font-medium text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-tight',
         titleClass,
       ]"
     >
       <slot name="title" />
-    </h2>
+    </component>
 
     <!-- Opis -->
     <p :class="['text-[16px]', descriptionClass]">
