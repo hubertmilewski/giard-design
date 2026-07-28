@@ -23,29 +23,42 @@ const currentIndex = ref(0)
 const currentSlide = computed<Slide>(() => slides[currentIndex.value] ?? slides[0]!)
 
 const transitionName = ref('slide-next')
-let autoSlideTimer: number | undefined
+let autoSlideInterval: number | undefined
+
+function startAutoSlide() {
+  stopAutoSlide()
+  autoSlideInterval = window.setInterval(() => {
+    nextSlide(true)
+  }, 5000)
+}
+
+function stopAutoSlide() {
+  if (autoSlideInterval) {
+    clearInterval(autoSlideInterval)
+    autoSlideInterval = undefined
+  }
+}
 
 onMounted(() => {
-  autoSlideTimer = window.setInterval(() => {
-    transitionName.value = 'slide-next'
-    currentIndex.value = (currentIndex.value + 1) % slides.length
-  }, 5000)
+  startAutoSlide()
 })
 
 onUnmounted(() => {
-  if (autoSlideTimer) {
-    window.clearInterval(autoSlideTimer)
-  }
+  stopAutoSlide()
 })
 
-const nextSlide = () => {
+const nextSlide = (isAuto = false) => {
   transitionName.value = 'slide-next'
   currentIndex.value = (currentIndex.value + 1) % slides.length
+  if (!isAuto) {
+    startAutoSlide()
+  }
 }
 
 const prevSlide = () => {
   transitionName.value = 'slide-prev'
   currentIndex.value = (currentIndex.value - 1 + slides.length) % slides.length
+  startAutoSlide()
 }
 </script>
 
@@ -57,6 +70,7 @@ const prevSlide = () => {
         class="lg:col-span-6 flex flex-col justify-center py-16 lg:py-0 px-4 sm:px-4 lg:px-0 lg:pl-[calc((100vw-1440px)/2+89px)] min-h-[60vh] lg:min-h-0"
       >
         <ContentBlock
+          :isH1="true"
           titleClass="text-[40px] lg:text-[60px] leading-[1.1]"
           descriptionClass="mt-11 max-w-[489px]"
         >
@@ -70,7 +84,7 @@ const prevSlide = () => {
           </template>
 
           <template #actions>
-            <Buttons primaryHref="/oferta" secondaryHref="/kontakt">
+            <Buttons primaryHref="#kontakt" secondaryHref="#realizacje">
               <template #primary>Skontaktuj się z nami</template>
               <template #secondary>
                 Zobacz nasze realizacje
@@ -103,7 +117,7 @@ const prevSlide = () => {
         <div class="absolute bottom-0 right-0 flex bg-base z-10">
           <button
             type="button"
-            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-base hover:bg-neutral-100 transition-colors"
+            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-base hover:bg-neutral-100 transition-colors cursor-pointer"
             aria-label="Poprzedni slajd"
             @click="prevSlide"
           >
@@ -112,9 +126,9 @@ const prevSlide = () => {
 
           <button
             type="button"
-            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-base hover:bg-neutral-100 transition-colors"
+            class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-base hover:bg-neutral-100 transition-colors cursor-pointer"
             aria-label="Następny slajd"
-            @click="nextSlide"
+            @click="nextSlide(false)"
           >
             <img :src="arrowLeft" alt="strzalkaWlewo" />
           </button>
@@ -132,7 +146,6 @@ const prevSlide = () => {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Nowe wjeżdża z prawej, stare odjeżdża w lewo */
 .slide-next-enter-from {
   transform: translateX(100%);
 }
@@ -140,7 +153,6 @@ const prevSlide = () => {
   transform: translateX(-100%);
 }
 
-/* Nowe wjeżdża z lewej, stare odjeżdża w prawo */
 .slide-prev-enter-from {
   transform: translateX(-100%);
 }
@@ -148,7 +160,6 @@ const prevSlide = () => {
   transform: translateX(100%);
 }
 
-/* Domyślny stan gdy obraz jest na środku */
 .slide-next-enter-to,
 .slide-next-leave-from,
 .slide-prev-enter-to,

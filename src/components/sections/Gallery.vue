@@ -95,10 +95,10 @@ function handleKeydown(e: KeyboardEvent) {
 </script>
 
 <template>
-  <section class="w-full bg-bg-sand overflow-hidden">
-    <div class="container-custom mx-auto">
-      <div class="pt-30 pb-24">
-        <ContentBlock titleClass="mt-[16px]" descriptionClass="hidden">
+  <section id="realizacje" class="w-full bg-bg-sand overflow-hidden">
+    <div class="container-custom mx-auto fade-on-scroll">
+      <div class="py-12 md:py-20 lg:pt-30 lg:pb-24">
+        <ContentBlock descriptionClass="hidden">
           <template #tag>
             <span class="text-[12px] text-primary">Realizacje</span>
           </template>
@@ -111,7 +111,7 @@ function handleKeydown(e: KeyboardEvent) {
     <div class="relative w-full">
       <div
         class="w-full overflow-hidden transition-[max-height] duration-700 ease-in-out"
-        :class="isExpanded ? 'max-h-[5000px]' : 'max-h-380'"
+        :class="isExpanded ? 'max-h-[6000px]' : 'max-h-275 sm:max-h-380'"
       >
         <div ref="masonryContainer" class="w-full">
           <div
@@ -135,7 +135,7 @@ function handleKeydown(e: KeyboardEvent) {
 
       <div
         v-if="!isExpanded"
-        class="absolute bottom-0 left-0 w-full h-112.5 bg-linear-to-t from-bg-sand via-bg-sand/90 to-transparent flex items-end justify-center pb-15 pointer-events-none"
+        class="absolute bottom-0 left-0 w-full h-72 sm:h-112.5 bg-linear-to-t from-bg-sand via-bg-sand/90 to-transparent flex items-end justify-center pb-8 sm:pb-15 pointer-events-none"
       >
         <div class="pointer-events-auto">
           <button

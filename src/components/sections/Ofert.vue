@@ -8,9 +8,9 @@ import Stars from '@/assets/icons/ofert/stars.svg'
 </script>
 
 <template>
-  <main class="w-full bg-bg-base">
+  <main id="oferta" class="w-full bg-bg-base">
     <section class="container-custom mx-auto pt-12 md:pt-20 lg:pt-30 pb-12 md:pb-20 lg:pb-40">
-      <div class="w-full mb-12 md:mb-24 px-4 sm:px-6 lg:px-0">
+      <div class="w-full mb-12 md:mb-24 px-4 sm:px-6 lg:px-0 fade-on-scroll">
         <ContentBlock
           titleClass="text-[32px] md:text-[40px] lg:text-[48px]"
           descriptionClass="mt-4 md:mt-8 max-w-[730px]"
@@ -26,27 +26,27 @@ import Stars from '@/assets/icons/ofert/stars.svg'
       </div>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-16 px-4 sm:px-6 lg:px-0"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-16 px-4 sm:px-6 lg:px-0 fade-on-scroll"
       >
         <OfertCard
           :iconSrc="Pen"
           title="Projekty"
           description="Zaprojektujemy Twój ogród w nowoczesnym stylu i z najlepszym wykorzystaniem istniejącej przestrzeni."
-          linkHref="/projekty"
+          linkHref="#realizacje"
         />
 
         <OfertCard
           :iconSrc="Eye"
           title="Wizualizacje"
           description="Przedstawimy Ci projekty koncepcyjne w postaci wirtualnego spaceru animowanego w technologii 3D."
-          linkHref="/projekty"
+          linkHref="#realizacje"
         />
 
         <OfertCard
           :iconSrc="Stars"
           title="Realizacje"
           description="Zrealizujemy Twoje marzenie przy użyciu najnowszych rozwiązań i zaawansowanych technologii."
-          linkHref="/projekty"
+          linkHref="#realizacje"
         />
       </div>
     </section>

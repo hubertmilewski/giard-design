@@ -4,10 +4,10 @@ import logo from '@/assets/icons/logo.svg'
 import adRespectLogo from '@/assets/icons/footer/adrespectLogo.webp'
 
 const footerLinks = [
-  { label: 'Kontakt', href: '/kontakt' },
-  { label: 'Instagram', href: '#' },
-  { label: 'Facebook', href: '#' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'Kontakt', href: '#kontakt' },
+  { label: 'Instagram', href: 'https://instagram.com' },
+  { label: 'Facebook', href: 'https://facebook.com' },
+  { label: 'LinkedIn', href: 'https://linkedin.com' },
 ]
 
 const contactDetails = [
@@ -28,7 +28,7 @@ const contactDetails = [
 
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
           <p class="text-[16px] text-base">Daj znać, co możemy dla Ciebie zrobić!</p>
-          <Buttons primaryHref="/kontakt">
+          <Buttons primaryHref="#kontakt">
             <template #primary>Skontaktuj się z nami</template>
           </Buttons>
         </div>
