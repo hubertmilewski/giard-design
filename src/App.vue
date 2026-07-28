@@ -9,13 +9,28 @@ import Footer from '@/components/layout/Footer.vue'
 </script>
 
 <template>
-  <Navbar />
-  <Intro class="pt-18" />
-  <Ofert />
-  <AboutCompany />
-  <Gallery />
-  <InstagramContact />
-  <Footer />
+  <div class="animate-fade-in">
+    <Navbar />
+    <Intro class="pt-18" />
+    <Ofert />
+    <AboutCompany />
+    <Gallery />
+    <InstagramContact />
+    <Footer />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.animate-fade-in {
+  animation: fadeInPage 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style>
