@@ -24,6 +24,7 @@ withDefaults(defineProps<Props>(), {
       cardClass,
     ]"
   >
+    <!-- Ikona -->
     <div class="mb-8 flex items-center justify-center w-10 h-10">
       <slot name="icon">
         <img
@@ -40,10 +41,12 @@ withDefaults(defineProps<Props>(), {
       {{ title }}
     </h3>
 
+    <!-- Opis -->
     <p class="text-[14px] leading-relaxed mb-6 sm:mb-10 md:mb-12 lg:mb-15.75">
       {{ description }}
     </p>
 
+    <!-- Odnośnik -->
     <a
       :href="linkHref"
       class="group inline-flex items-center gap-2.5 text-primary border-b border-primary pb-1 transition-all hover:text-primary/90 hover:border-primary/90"

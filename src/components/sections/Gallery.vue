@@ -5,6 +5,7 @@ import Macy from 'macy'
 import ContentBlock from '@/components/ui/ContentBlock.vue'
 import Arrow from '@/assets/icons/button/buttonArrowDown.svg'
 
+// Ładowanie obrazków (zamiast importu pojedynczych plików)
 const imageModules = import.meta.glob('@/assets/images/ourProjects/*.webp', {
   eager: true,
 }) as Record<string, { default: string }>
