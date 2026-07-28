@@ -1,0 +1,9 @@
+# GiardDesign — Zadanie Rekrutacyjne
+
+Cześć, podczas tworzenia projektu zdecydowałem się na wybór frameworka Vue.js oraz TailwindCSS, kierując się stackiem technologicznym wykorzystywanym w Waszej firmie. W wolnym czasie szlifowałem składnię Vue oraz zasady budowania aplikacji w tym ekosystemie, dzięki temu sprawnie podzieliłem widoki na komponenty wielokrotnego użytku (np. bloki treści, karty ofertowe czy przyciski). Dzięki temu uniknąłem powtarzania kodu, zachowując przy tym przejrzystą i poukładaną strukturę katalogów w całym projekcie.
+
+Główny nacisk kładłem na odwzorowanie czystego, responsywnego i estetycznego interfejsu z dbałością o najwyższą optymalizację. Zamiast ciężkich czy przytłaczających efektów zastosowałem delikatne, płynne animacje scrollowania i przejść, które podnoszą jakość UX bez obciążania przeglądarki. Do stylowania wykorzystałem TailwindCSS wraz z centralną konfiguracją zmiennych motywu, co zagwarantowało spójność kolorystyczną oraz typograficzną na wszystkich urządzeniach.
+
+Duży nacisk położyłem na wydajność serwowanych zasobów oraz szybkość wczytywania. Obrazy zostały skompresowane i dostosowane do nowoczesnych formatów WebP, a w pliku HTML zastosowałem preloading krytycznych zasobów oraz odpowiednią hierarchię nagłówków pod kątem SEO (meta tagi czy robots.txt z racji zakresu zadania pominąłem).
+
+Całość prac realizowałem w oparciu o osobną gałąź w systemie Git. Po wprowadzeniu każdej zmiany wykonywałem build produkcyjny (`npm run build` & `npm run preview`) i skrupulatnie weryfikowałem wyniki w narzędziu Lighthouse bezpośrednio w DevTools. Po uzyskaniu satysfakcjonujących rezultatów wdrażałem zmiany na główną gałąź. Finalne raporty z testów wydajnościowych zostały załączone w katalogu public: [Raport Desktop](./public/LightHouseDesktop.html) oraz [Raport Mobile](./public/LightHouseMobile.html).
