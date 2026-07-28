@@ -33,7 +33,7 @@ import arrow from '@/assets/icons/button/arrowOfert.svg'
         <div class="hidden lg:block lg:col-span-7"></div>
 
         <div class="w-full lg:col-span-5 py-12 sm:py-16 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-0">
-          <div class="max-w-130 mx-auto lg:mx-0">
+          <div class="max-w-130 mx-auto lg:mx-0 fade-on-scroll">
             <ContentBlock titleClass="text-base" descriptionClass="text-base mt-10 lg:mt-8">
               <template #tag>
                 <span class="text-[12px] text-base"> O firmie </span>
